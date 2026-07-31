@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+
+# 生成物（学習で再現できるものはコミットしない）
+data/corpus.txt
+data/corpus.meta.json
+data/cache/
+data/raw/*
+!data/raw/.gitkeep
+
+# 学習済みモデルは配布したいので final だけ追跡する（約44MB）
+checkpoints/*
+!checkpoints/final
+
+# 学習ログは記事の裏付けとして残す
+runs/*
+!runs/loss.csv
+!runs/train.log
