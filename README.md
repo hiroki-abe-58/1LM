@@ -167,6 +167,7 @@ flowchart LR
 | [server.py](server.py) | FastAPI。SSE でトークンを流す |
 | [web/](web/) | Liquid Glass 風のチャットGUI |
 | [data/prepare.py](data/prepare.py) | コーパス整形 |
+| [tools/](tools/) | 記事用の作図・撮影ツール（`pip install -r requirements-dev.txt`） |
 
 ## つまずきポイント
 
