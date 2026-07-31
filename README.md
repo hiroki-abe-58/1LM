@@ -195,6 +195,18 @@ checkpoints/final/
 自分で学習し直すと同じ場所が上書きされます。残しておきたい場合は
 `--out checkpoints/myrun` を指定してください。
 
+### GitHubへ公開する
+
+```bash
+gh repo create 1LM --public --source . --remote origin --push
+# または
+git remote add origin git@github.com:<your-account>/1LM.git
+git push -u origin main
+```
+
+`model.safetensors` は約44MBで、GitHubの警告ライン(50MB)未満なのでそのまま push できます。
+これより大きいモデルを配る場合は Hugging Face Hub か Git LFS を使ってください。
+
 ## ライセンス / クレジット
 
 - コード: MIT License
