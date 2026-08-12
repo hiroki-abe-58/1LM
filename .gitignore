@@ -20,3 +20,4 @@ runs/*
 
 # 記事の原稿はローカル管理（docs/images だけ公開する）
 docs/*.md
+tools/to_note.py
