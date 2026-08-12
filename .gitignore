@@ -14,7 +14,9 @@ data/raw/*
 checkpoints/*
 !checkpoints/final
 
-# 学習ログは記事の裏付けとして残す
+# 学習ログは絶対パスを含むので loss.csv だけ残す
 runs/*
 !runs/loss.csv
-!runs/train.log
+
+# 記事の原稿はローカル管理（docs/images だけ公開する）
+docs/*.md

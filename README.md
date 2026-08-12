@@ -171,14 +171,17 @@ flowchart LR
 
 ## つまずきポイント
 
-制作中に実際に踏んだ罠は [docs/notes.md](docs/notes.md) にまとめています。
-記事版は [docs/qiita.md](docs/qiita.md)、動画台本は [docs/youtube_script.md](docs/youtube_script.md)。
-
-とくに多いのはこの3つです。
+制作中に踏んだ罠のうち、質問が多そうなものを挙げておきます。
 
 1. **返答が同じ言葉を繰り返す** → モデルではなくサンプリングを疑う。`repetition_penalty` を 1.15 前後に。
 2. **返答が毎回崩れる** → 推論前に `model.eval()` を呼んで Dropout を切る。
-3. **学習が異常に遅い** → `ps` で train.py の二重起動を確認する。
+3. **学習が異常に遅い** → `ps aux | grep train.py` で二重起動を確認する。
+   `python src/train.py | tee log` を Ctrl-C や `kill` で止めても、`tee` だけが死んで
+   Python 側が生き残ることがある。GPU を食い合って tok/s が半分以下になる。
+4. **`mx.compile` した学習ステップで Dropout が効かない** → `mx.random.state` を
+   入出力に渡さないと、コンパイル時の乱数が固定されてしまう。
+5. **`conda` で入れた MLX が動かない** → x86_64 の Python になっていないか確認する。
+   `CONDA_SUBDIR=osx-arm64` を付けて環境を作り直すのが速い。
 
 ## 学習済みモデルについて
 
