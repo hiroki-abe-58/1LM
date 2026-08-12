@@ -81,13 +81,15 @@ python data/prepare.py --no-hf            # data/raw/ の自分のデータだ�
 ## 2. 学習する
 
 ```bash
-python src/train.py                             # 4,300ステップ（M1 Maxで約30分）
+python src/train.py                             # 4,300ステップ（M1 Maxで35分前後。既定の35分で打ち切り）
 python src/train.py --minutes 5                 # まず5分だけ試す
 python src/train.py --steps 8000 --minutes 70   # じっくり
 ```
 
 - `--minutes` は保険です。**ステップ数は自分のマシンの実測 tok/s から逆算**してください
   （`cosine_decay` は総ステップ数を前提に学習率を下げるため、途中打ち切りは損）。
+  逆算にはベンチマーク値ではなく通しの実測値を使うこと。検証とサンプル生成のぶん、
+  ベンチマークより2割ほど遅くなります（実測: ベンチ37k tok/s に対し通しは31k tok/s）。
 - 検証損失が改善したときだけ `checkpoints/final/` に保存します。
 - 250ステップごとに「こんにちは」への返答を出力するので、賢くなっていく様子が見られます。
 
