@@ -212,7 +212,17 @@ git push -u origin main
 
 ## ライセンス / クレジット
 
-- コード: MIT License
-- 学習データ: [kunishou/oasst1-89k-ja](https://huggingface.co/datasets/kunishou/oasst1-89k-ja)（Apache-2.0）。
-  原典は [OpenAssistant/oasst1](https://huggingface.co/datasets/OpenAssistant/oasst1)。
-- 生成される文章はモデルが統計的に作ったもので、事実性は一切保証されません。
+**コード**は MIT License です（[LICENSE](LICENSE)）。
+
+**同梱の学習済みモデル**は、以下の Apache-2.0 データセットから学習しています。
+再配布・商用利用のいずれの場合も、この出典表示を残してください。
+
+- 原典: [OpenAssistant/oasst1](https://huggingface.co/datasets/OpenAssistant/oasst1)（Apache-2.0）
+- 日本語版: [kunishou/oasst1-89k-ja](https://huggingface.co/datasets/kunishou/oasst1-89k-ja)（Apache-2.0。Google翻訳による日本語化）
+
+前処理で加えた変更点とライセンス全文は [NOTICE](NOTICE) と
+[licenses/Apache-2.0.txt](licenses/Apache-2.0.txt) にあります。
+
+生成される文章は、コーパスの統計から次の1文字を予測し続けた結果にすぎません。
+事実性は一切保証されず、実在の人物や団体について誤った内容を出力することがあります。
+出力を公開の場に掲載する場合は、機械生成物である旨を明記してください。

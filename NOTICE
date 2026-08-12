@@ -1,0 +1,48 @@
+1LM
+Copyright (c) 2026 hiroki-abe-58
+
+このリポジトリのコード（src/, data/prepare.py, tools/, web/, server.py）は
+MIT License で提供しています。LICENSE を参照してください。
+
+
+================================================================================
+学習済みモデル（checkpoints/final/）について
+================================================================================
+
+同梱の重みは、以下の Apache License 2.0 で公開されているデータセットから
+学習したものです。再配布・商用利用のいずれの場合も、この出典表示を保持してください。
+
+  OpenAssistant Conversations Dataset (OASST1)
+    https://huggingface.co/datasets/OpenAssistant/oasst1
+    Copyright (c) OpenAssistant / LAION-AI contributors
+    Licensed under the Apache License, Version 2.0
+
+  oasst1-89k-ja（OASST1 を Google 翻訳で日本語化したもの）
+    https://huggingface.co/datasets/kunishou/oasst1-89k-ja
+    Licensed under the Apache License, Version 2.0
+
+Apache License, Version 2.0 の全文は licenses/Apache-2.0.txt に同梱しています。
+原文: http://www.apache.org/licenses/LICENSE-2.0
+
+加えた変更（Apache License 2.0 Section 4(b) に基づく記載）:
+
+  - prompter と assistant のペアを parent_id から復元した
+  - 翻訳失敗フラグ（ng_translation == "1"）の立ったレコードを除外した
+  - 質問・返答の長さでフィルタし、重複を除去した
+  - 出現頻度の低い文字を含む会話を除外した
+  - 改行を半角スペースに置換し、1行1会話のプレーンテキストに整形した
+
+以上の処理は data/prepare.py に実装されています。
+整形後のコーパス自体はリポジトリに含めていません。
+data/prepare.py を実行すると同じものが再現できます。
+
+
+================================================================================
+免責
+================================================================================
+
+本モデルの出力は、学習コーパスの統計から次の1文字を予測し続けた結果にすぎません。
+事実性・正確性は一切保証されず、実在の人物・団体・製品について
+誤った内容を断定的に出力する場合があります。
+
+出力をそのまま公開の場に掲載する場合は、機械生成物である旨を明記してください。
